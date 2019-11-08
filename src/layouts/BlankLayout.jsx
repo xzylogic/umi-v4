@@ -1,9 +1,10 @@
 import React from 'react';
 import CopyBlock from '@/components/CopyBlock';
+import styles from './BasicLayout.less';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, location }) => (
   <>
-    <div>{children}</div>
+    <div className={location.pathname === '/index' ? styles.headerContainer : ''}>{children}</div>
     <CopyBlock id={Date.now()} />
   </>
 );

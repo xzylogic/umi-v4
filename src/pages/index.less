@@ -1,0 +1,44 @@
+@import '~antd/es/style/themes/default.less';
+
+.indexImg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 64px;
+  left: 0;
+  width: 100%;
+  background: red;
+  .pic1 {
+    background: url("../assets/1.jpg") no-repeat center center lightgray;
+  }
+  .pic2 {
+    background: url("../assets/2.jpg") no-repeat center center lightgray;
+  }
+  .pic3 {
+    background: url("../assets/3.jpg") no-repeat center center lightgray;
+  }
+  .pic4 {
+    background: url("../assets/4.jpg") no-repeat center center lightgray;
+  }
+  :global {
+    .ant-carousel .slick-slide {
+      height: calc(100vh - 64px);
+      overflow: hidden;
+      line-height: calc(100vh - 64px);
+      text-align: center;
+      background: #364d79;
+    }
+
+    .ant-carousel-vertical .slick-dots li button, .ant-carousel-vertical .slick-dots li.slick-active button {
+      height: 10vh;
+    }
+
+    .ant-carousel-vertical .slick-dots li {
+      margin: 10px 2px;
+    }
+
+    .ant-carousel-vertical .slick-dots-right {
+      right: 10vw;
+    }
+  }
+}

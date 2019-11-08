@@ -7,5 +7,6 @@ module.exports = {
   rules: {
     'max-len': ['error', { code: 300 }],
     'no-nested-ternary': 1,
+    'no-plusplus': 1,
   },
 };

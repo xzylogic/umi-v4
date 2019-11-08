@@ -119,13 +119,16 @@ export default {
     basePath: '/',
   },
   chainWebpack: webpackPlugin,
-  /*
   proxy: {
-    '/server/api/': {
-      target: 'https://preview.pro.ant.design/',
+    '/dev': {
+      target: 'http://16845-yfyb-common-zatech-gaia-devcenter.test.za-tech.net',
       changeOrigin: true,
-      pathRewrite: { '^/server': '' },
+      // pathRewrite: { '^/server': '' },  // '/server/api/'
+    },
+    '/resource': {
+      target: 'http://16845-yfyb-common-zatech-gaia-devcenter.test.za-tech.net',
+      changeOrigin: true,
+      // pathRewrite: { '^/server': '' },  // '/server/api/'
     },
   },
-  */
 };

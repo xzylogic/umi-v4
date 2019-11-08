@@ -3,16 +3,17 @@
  * You can view component api by:
  * https://github.com/ant-design/ant-design-pro-layout
  */
-import ProLayout, { DefaultFooter, SettingDrawer } from '@ant-design/pro-layout';
+import ProLayout, { SettingDrawer } from '@ant-design/pro-layout';
 import React, { useEffect } from 'react';
 import Link from 'umi/link';
 import { connect } from 'dva';
-import { Icon, Result, Button } from 'antd';
+import { Divider, Result, Button } from 'antd';
 import { formatMessage } from 'umi-plugin-react/locale';
 import Authorized from '@/utils/Authorized';
 import RightContent from '@/components/GlobalHeader/RightContent';
 import { isAntDesignPro, getAuthorityFromRouter } from '@/utils/utils';
 import logo from '../assets/logo.svg';
+import styles from './BasicLayout.less';
 
 const noMatch = (
   <Result
@@ -29,7 +30,20 @@ const noMatch = (
 /**
  * use Authorized check all menu item
  */
+// 请求获取菜单
+// const [menuData, setMenuData] = useState([]);
+//
+// useEffect(() => {
+//   // 这里是一个演示用法
+//   // 真实项目中建议使用 dva dispatch 或者 umi-request
+//   fetch('/api/example.json')
+//     .then(response => response.json())
+//     .then(data => {
+//       setMenuData(data || []);
+//     });
+// }, []);
 
+// 原路由菜单
 const menuDataRender = menuList =>
   menuList.map(item => {
     const localItem = { ...item, children: item.children ? menuDataRender(item.children) : [] };
@@ -37,30 +51,51 @@ const menuDataRender = menuList =>
   });
 
 const defaultFooterDom = (
-  <DefaultFooter
-    copyright="2019 蚂蚁金服体验技术部出品"
-    links={[
-      {
-        key: 'Ant Design Pro',
-        title: 'Ant Design Pro',
-        href: 'https://pro.ant.design',
-        blankTarget: true,
-      },
-      {
-        key: 'github',
-        title: <Icon type="github" />,
-        href: 'https://github.com/ant-design/ant-design-pro',
-        blankTarget: true,
-      },
-      {
-        key: 'Ant Design',
-        title: 'Ant Design',
-        href: 'https://ant.design',
-        blankTarget: true,
-      },
-    ]}
-  />
+  <div className={styles.footContainer}>
+    <a href="#">链接名称</a>
+    <Divider type="vertical" />
+    <a href="#">链接名称</a>
+    <Divider type="vertical" />
+    <a href="#">链接名称</a>
+    <Divider type="vertical" />
+    <a href="#">链接名称</a>
+    <Divider type="vertical" />
+    <a href="#">链接名称</a>
+    <Divider type="vertical" />
+    <a href="#">链接名称</a>
+    <Divider type="vertical" />
+    <a href="#">链接名称</a>
+    <Divider type="vertical" />
+    <a href="#">链接名称</a>
+    <Divider type="vertical" />
+    <a href="#">链接名称</a>
+  </div>
 );
+// const defaultFooterDom = (
+//   <DefaultFooter
+//     copyright="2019 蚂蚁金服体验技术部出品"
+//     links={[
+//       {
+//         key: 'Ant Design Pro',
+//         title: 'Ant Design Pro',
+//         href: 'https://pro.ant.design',
+//         blankTarget: true,
+//       },
+//       {
+//         key: 'github',
+//         title: <Icon type="github" />,
+//         href: 'https://github.com/ant-design/ant-design-pro',
+//         blankTarget: true,
+//       },
+//       {
+//         key: 'Ant Design',
+//         title: 'Ant Design',
+//         href: 'https://ant.design',
+//         blankTarget: true,
+//       },
+//     ]}
+//   />
+// );
 
 const footerRender = () => {
   if (!isAntDesignPro()) {
@@ -96,11 +131,11 @@ const BasicLayout = props => {
     location = {
       pathname: '/',
     },
+    menu,
   } = props;
   /**
    * constructor
    */
-
   useEffect(() => {
     if (dispatch) {
       dispatch({
@@ -109,11 +144,15 @@ const BasicLayout = props => {
       dispatch({
         type: 'settings/getSetting',
       });
+      dispatch({
+        type: 'menu/fetchMenu',
+      });
     }
   }, []);
   /**
    * init variables
    */
+  console.log(props);
 
   const handleMenuCollapse = payload => {
     if (dispatch) {
@@ -158,7 +197,8 @@ const BasicLayout = props => {
           );
         }}
         footerRender={footerRender}
-        menuDataRender={menuDataRender}
+        menuDataRender={() => menu.menuCopy} // 请求的路由数据放入这里
+        // menuDataRender={menuDataRender} // 此处是router.config.js里的路由
         formatMessage={formatMessage}
         rightContentRender={rightProps => <RightContent {...rightProps} />}
         {...props}
@@ -181,7 +221,8 @@ const BasicLayout = props => {
   );
 };
 
-export default connect(({ global, settings }) => ({
+export default connect(({ global, settings, menu }) => ({
   collapsed: global.collapsed,
   settings,
+  menu,
 }))(BasicLayout);
