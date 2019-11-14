@@ -43,6 +43,7 @@ class Register extends Component {
     help: '',
     prefix: '86',
   };
+
   interval = undefined;
 
   componentDidUpdate() {
@@ -80,6 +81,7 @@ class Register extends Component {
       }
     }, 1000);
   };
+
   getPasswordStatus = () => {
     const { form } = this.props;
     const value = form.getFieldValue('password');
@@ -94,6 +96,7 @@ class Register extends Component {
 
     return 'poor';
   };
+
   handleSubmit = e => {
     e.preventDefault();
     const { form, dispatch } = this.props;
@@ -112,6 +115,7 @@ class Register extends Component {
       },
     );
   };
+
   checkConfirm = (rule, value, callback) => {
     const { form } = this.props;
 
@@ -125,6 +129,7 @@ class Register extends Component {
       callback();
     }
   };
+
   checkPassword = (rule, value, callback) => {
     const { visible, confirmDirty } = this.state;
 
@@ -162,11 +167,13 @@ class Register extends Component {
       }
     }
   };
+
   changePrefix = value => {
     this.setState({
       prefix: value,
     });
   };
+
   renderPasswordProgress = () => {
     const { form } = this.props;
     const value = form.getFieldValue('password');

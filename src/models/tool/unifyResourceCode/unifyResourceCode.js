@@ -1,22 +1,22 @@
-import { commonModulesService } from '@/services/server-sdk/server-sdk';
+import { resourceService } from '@/services/tool/tool';
 
 export default {
-  namespace: 'server-sdk',
+  namespace: 'unifyResourceCode',
 
   state: {
     list: {
-      commonModules: [],
+      resourceCode: [],
     },
   },
 
   effects: {
-    *fetchCommonModules({ payload }, { call, put }) {
-      const res = yield call(commonModulesService, payload);
+    *fetchResource({ payload }, { call, put }) {
+      const res = yield call(resourceService, payload);
       if (res && res.success) {
         yield put({
           type: 'updateList',
           payload: {
-            key: 'commonModules',
+            key: 'resourceCode',
             list: res.value,
           },
         });

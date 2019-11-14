@@ -24,6 +24,12 @@ export default [
             component: './user/register',
           },
           {
+            name: 'login',
+            icon: 'smile',
+            path: '/user/login',
+            component: './user/login',
+          },
+          {
             component: '404',
           },
         ],
@@ -54,9 +60,9 @@ export default [
             name: 'tool',
             routes: [
               {
-                name: 'resourceCode',
-                path: '/tool/resourceCode',
-                component: './tool/resourceCode',
+                name: 'unifyResourceCode',
+                path: '/tool/unifyResourceCode',
+                component: './tool/unifyResourceCode',
               },
             ],
           },
@@ -74,8 +80,7 @@ export default [
             path: '/bg-manage-center',
             name: 'bg-manage-center',
             component: './bg-manage-center',
-          },
-          // {
+          }, // {
           //   path: '/dashboard',
           //   name: 'dashboard',
           //   icon: 'dashboard',

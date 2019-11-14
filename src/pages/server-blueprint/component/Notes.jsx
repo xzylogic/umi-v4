@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { List, Button, Tag, Typography, Skeleton } from 'antd';
-// import reqwest from 'reqwest';
-// import moment from 'moment';
+import { List, Button, Tag, Typography } from 'antd';
 import styles from '../index.less';
 
 const namespace = 'server-blueprint';
@@ -10,6 +8,7 @@ const mapStateToProps = state => ({
   releaseNotesList: state[namespace].list.releaseNotes,
   releaseNotesPage: state[namespace].currentPage.releaseNotes,
   releaseNotesTotal: state[namespace].totalElements.releaseNotes,
+  // loading: state.loading.effects[`${namespace}/fetchComponentReleaseNotes`],
 });
 const mapDispatchToProps = dispatch => ({
   fetchComponentReleaseNotes: currentPage =>
@@ -108,8 +107,6 @@ export class Notes extends Component {
               {item.subTitle && item.subTitle.split(',').map(val => (<Tag key={val}>{val}</Tag>))}
               <div className={styles.content}>
                 <p>{item.linkedUrl}</p>
-                <p>11111111111111111111111111</p>
-                <p>2222222222222222222222222222222222222222</p>
               </div>
               <Typography.Text type="secondary" style={{ background: 'url(https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png) 0 0 / 20px 20px no-repeat' }}>{item.creator} &nbsp;&nbsp;&nbsp; {item.gmtCreated}</Typography.Text>
             </div>

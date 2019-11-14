@@ -9,7 +9,7 @@ export default {
   'menu.server-sdk.demo2.page2': '页面二',
   'menu.server-blueprint': '服务蓝图',
   'menu.tool': '工具',
-  'menu.tool.resourceCode': '统一资源码',
+  'menu.tool.unifyResourceCode': '统一资源码',
   'menu.train-center': '培训中心',
   'menu.tech-support': '技术支持',
   'menu.bg-manage-center': '后管中心',

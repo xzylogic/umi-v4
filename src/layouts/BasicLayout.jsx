@@ -176,7 +176,7 @@ const BasicLayout = props => {
             return defaultDom;
           }
 
-          return <Link to={menuItemProps.path}>{defaultDom}</Link>;
+          return <Link to={menuItemProps.path === '/tool/unifyResourceCode' ? `${menuItemProps.path}?id=${menuItemProps.id}&menuCode=${menuItemProps.menuCode}` : menuItemProps.path}>{defaultDom}</Link>;
         }}
         breadcrumbRender={(routers = []) => [
           {
@@ -197,8 +197,8 @@ const BasicLayout = props => {
           );
         }}
         footerRender={footerRender}
-        menuDataRender={() => menu.menuCopy} // 请求的路由数据放入这里
-        // menuDataRender={menuDataRender} // 此处是router.config.js里的路由
+        menuDataRender={() => menu.menuCopy} // 开发时注释，请求的路由数据menu.menuCopy放入这里
+        // menuDataRender={menuDataRender} // 上线时注释，此处menuDataRender是router.config.js文件里的路由
         formatMessage={formatMessage}
         rightContentRender={rightProps => <RightContent {...rightProps} />}
         {...props}

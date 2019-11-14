@@ -2,6 +2,7 @@ import { componentUsedRecordsService, componentReleaseNotesService } from '@/ser
 
 export default {
   namespace: 'server-blueprint',
+
   state: {
     list: {
       usedRecords: null,
@@ -14,6 +15,7 @@ export default {
       releaseNotes: null,
     },
   },
+
   effects: {
     *fetchComponentUsedRecords({ payload }, { call, put }) {
       const { startValue, endValue } = payload;
@@ -24,16 +26,14 @@ export default {
           payload: {
             key: 'usedRecords',
             list: res.value,
-            // currentPage: page,
-            // totalElements: res.data.totalElements,
           },
         });
       }
     },
+
     *fetchComponentReleaseNotes({ payload }, { call, put }) {
       const { currentPage } = payload;
       const res = yield call(componentReleaseNotesService, { current: currentPage, size: 2 });
-      console.log(res);
       if (res && res.success) {
         yield put({
           type: 'updateConcatList',
@@ -47,6 +47,7 @@ export default {
       }
     },
   },
+
   reducers: {
     updateList(state, { payload }) {
       return {
@@ -55,16 +56,9 @@ export default {
           ...state.list,
           [payload.key]: payload.list,
         },
-        // currentPage: {
-        //   ...state.currentPage,
-        //   [payload.key]: payload.currentPage,
-        // },
-        // totalElements: {
-        //   ...state.totalElements,
-        //   [payload.key]: payload.totalElements,
-        // },
       };
     },
+
     updateConcatList(state, { payload }) {
       return {
         ...state,

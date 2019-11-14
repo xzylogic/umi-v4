@@ -11,15 +11,14 @@ const changeMenus = menusRoot => {
         childMenus = childMenus[0];
       }
       const newMenu = {};
+      newMenu.path = childMenus.url;
+      newMenu.name = childMenus.menuName;
+      newMenu.order = childMenus.order;
+      newMenu.menuCode = childMenus.menuCode;
+      newMenu.id = childMenus.id;
       if (Array.isArray(childMenus.childrenMenuViewList) && childMenus.childrenMenuViewList.length >= 1) { // 如果子菜单是数组且长度>=1那么循环调用值赋值
-        newMenu.path = childMenus.url;
-        newMenu.name = childMenus.menuName;
-        newMenu.order = childMenus.order;
         newMenu.children = [changeMenu(childMenus.childrenMenuViewList)];
       } else { // 直接值赋值
-        newMenu.path = childMenus.url;
-        newMenu.name = childMenus.menuName;
-        newMenu.order = childMenus.order;
         newMenu.children = childMenus.childrenMenuViewList;
       }
       return newMenu;

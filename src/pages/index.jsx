@@ -5,7 +5,7 @@ import styles from './index.less'
 export class index extends Component {
   componentDidMount() {
     if (/.*Firefox.*/.test(navigator.userAgent)) {
-      document.addEventListener('DOMMouseScroll', (e) => {
+      document.addEventListener('DOMMouseScroll', e => {
         e = e || window.event;
         if (e.detail > 0) {
           this.slider.next();
@@ -16,7 +16,7 @@ export class index extends Component {
         }
       });
     } else {
-      document.onmousewheel = (e) => {
+      document.onmousewheel = e => {
         e = e || window.event;
         if (e.wheelDelta > 0) {
           this.slider.prev();
