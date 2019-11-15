@@ -8,7 +8,9 @@ const changeMenus = menusRoot => {
   return Array.isArray(menu) && menu.length >= 1 && menu.map(menus => {
     function changeMenu(childMenus) {
       if (Array.isArray(childMenus)) {
+        /* eslint-disable */
         childMenus = childMenus[0];
+        /* eslint-enable */
       }
       const newMenu = {};
       newMenu.path = childMenus.url;

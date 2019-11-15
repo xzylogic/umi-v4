@@ -175,8 +175,10 @@ const BasicLayout = props => {
           if (menuItemProps.isUrl) {
             return defaultDom;
           }
-
-          return <Link to={menuItemProps.path === '/tool/unifyResourceCode' ? `${menuItemProps.path}?id=${menuItemProps.id}&menuCode=${menuItemProps.menuCode}` : menuItemProps.path}>{defaultDom}</Link>;
+          const menuPath = (menuItemProps.path === '/tool/unifyResourceCode') ?
+            `${menuItemProps.path}?id=${menuItemProps.id}&menuCode=${menuItemProps.menuCode}`
+            : menuItemProps.path;
+          return <Link to={menuPath}>{defaultDom}</Link>;
         }}
         breadcrumbRender={(routers = []) => [
           {

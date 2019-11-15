@@ -1,7 +1,7 @@
 import request from '@/utils/request';
 
 export async function resourceService(params) {
-  return request('/resource/listPriviledge', {
+  return request('/service/resource/listPriviledge', {
     method: 'POST',
     data: params,
   });

@@ -1,4 +1,4 @@
-import { commonModulesService } from '@/services/server-sdk/server-sdk';
+import { commonModulesService, commonSiderListService } from '@/services/server-sdk/server-sdk';
 
 export default {
   namespace: 'server-sdk',
@@ -6,6 +6,7 @@ export default {
   state: {
     list: {
       commonModules: [],
+      commonList: [],
     },
   },
 
@@ -17,6 +18,19 @@ export default {
           type: 'updateList',
           payload: {
             key: 'commonModules',
+            list: res.value,
+          },
+        });
+      }
+    },
+
+    *fetchCommonSiderList({ payload }, { call, put }) {
+      const res = yield call(commonSiderListService, payload);
+      if (res && res.success) {
+        yield put({
+          type: 'updateList',
+          payload: {
+            key: 'commonList',
             list: res.value,
           },
         });

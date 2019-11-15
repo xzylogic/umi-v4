@@ -2,7 +2,7 @@ import request from '@/utils/request';
 
 export async function componentUsedRecordsService(params) {
   console.log(params);
-  // return request('/dev/center/component-used-records', {
+  // return request('/service/dev/center/component-used-records', {
   //   method: 'POST',
   //   data: params,
   // });

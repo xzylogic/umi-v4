@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
   releaseNotesList: state[namespace].list.releaseNotes,
   releaseNotesPage: state[namespace].currentPage.releaseNotes,
   releaseNotesTotal: state[namespace].totalElements.releaseNotes,
-  // loading: state.loading.effects[`${namespace}/fetchComponentReleaseNotes`],
+  loading: state.loading.effects[`${namespace}/fetchComponentReleaseNotes`],
 });
 const mapDispatchToProps = dispatch => ({
   fetchComponentReleaseNotes: currentPage =>
@@ -25,22 +25,19 @@ const mapDispatchToProps = dispatch => ({
 
 export class Notes extends Component {
   state = {
-    loading: true,
     size: 2,
   };
 
-  async componentDidMount() {
-    await this.props.fetchComponentReleaseNotes(1);
-    await this.setState({ loading: false });
+  componentDidMount() {
+    this.props.fetchComponentReleaseNotes(1);
   }
 
-  onLoadMore = async() => {
+  onLoadMore = () => {
     const { releaseNotesPage } = this.props;
-    await this.setState({ loading: true });
-    await this.props.fetchComponentReleaseNotes(releaseNotesPage + 1);
-    await this.setState({ loading: false }, () => {
-      window.dispatchEvent(new Event('resize'));
-    });
+    this.props.fetchComponentReleaseNotes(releaseNotesPage + 1);
+    // await this.setState({ loading: false }, () => {
+    //   window.dispatchEvent(new Event('resize'));
+    // });
   };
 
   changeMonth = item => {
@@ -84,8 +81,7 @@ export class Notes extends Component {
   );
 
   render() {
-    const { loading } = this.state;
-    const { releaseNotesList, releaseNotesPage, releaseNotesTotal } = this.props;
+    const { releaseNotesList, releaseNotesPage, releaseNotesTotal, loading } = this.props;
     const loadMore =
       releaseNotesPage * this.state.size <= releaseNotesTotal ? (
         <Button onClick={this.onLoadMore} className={styles.loadMore}>加载更多...</Button>

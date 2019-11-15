@@ -40,10 +40,10 @@ export class index extends Component {
     ),
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     const { fetchResource } = this.props;
     const { menuCode } = this.props.location.query;
-    await fetchResource({ needChild: true, resourceCode: menuCode, systemCode: 'SYSTEM_ROOT', userId: 1 });
+    fetchResource({ needChild: true, resourceCode: menuCode, systemCode: 'SYSTEM_ROOT', userId: 1 });
   }
 
   render() {

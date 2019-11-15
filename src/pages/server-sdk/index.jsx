@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import { Tabs, Card, Button, Avatar, Row, Col } from 'antd';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
+import PageLoading from '@/components/PageLoading';
 // import { FormattedMessage } from 'umi-plugin-react/locale';
 import styles from './index.less';
 
@@ -11,11 +12,18 @@ const { Meta } = Card;
 const namespace = 'server-sdk';
 const mapStateToProps = state => ({
   commonModulesList: state[namespace].list.commonModules,
+  loading: state.loading.effects[`${namespace}/fetchCommonModules`],
 });
 const mapDispatchToProps = dispatch => ({
   fetchCommonModules: params =>
     dispatch({
       type: `${namespace}/fetchCommonModules`,
+      payload: params,
+    }),
+
+  fetchCommonSiderList: params =>
+    dispatch({
+      type: `${namespace}/fetchCommonSiderList`,
       payload: params,
     }),
 });
@@ -27,11 +35,14 @@ const mapDispatchToProps = dispatch => ({
 
 export class index extends Component {
   componentDidMount() {
-    this.props.fetchCommonModules({ componentType: 'SERVICE' }); // 'OCTOPUS'
+    const { fetchCommonModules, fetchCommonSiderList } = this.props;
+    // const { menuCode } = this.props.location.query;
+    fetchCommonModules({ componentType: 'SERVICE' }); // 'OCTOPUS'
+    // fetchCommonSiderList({ needChild: true, resourceCode: menuCode, systemCode: 'SYSTEM_ROOT', userId: 1 });
   }
 
   render() {
-    const { commonModulesList } = this.props;
+    const { commonModulesList, loading } = this.props;
     return (
       <PageHeaderWrapper>
         <Tabs tabPosition="left" tabBarStyle={{ background: '#FFF' }}>
@@ -39,7 +50,7 @@ export class index extends Component {
             <Row gutter={20} className={styles.componentType}>
               {
                 commonModulesList.length >= 1 && commonModulesList.map(val => (
-                  <Col span={6} key={val.id}>
+                  <Col span={8} key={val.id}>
                     <Card
                       title={val.name}
                       bordered={false}
@@ -72,6 +83,7 @@ export class index extends Component {
             </Card>
           </TabPane>
         </Tabs>
+        { loading ? <PageLoading/> : null }
       </PageHeaderWrapper>
     )
   }

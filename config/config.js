@@ -2,6 +2,7 @@ import defaultSettings from './defaultSettings'; // https://umijs.org/config/
 import pageRoutes from './router.config';
 import slash from 'slash2';
 import webpackPlugin from './plugin.config';
+import _proxy from './proxy';
 const { pwa, primaryColor } = defaultSettings; // preview.pro.ant.design only do not use in your production ;
 // preview.pro.ant.design 专用环境变量，请不要在你的项目中使用它。
 // const { ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION } = process.env;
@@ -119,16 +120,5 @@ export default {
     basePath: '/',
   },
   chainWebpack: webpackPlugin,
-  proxy: {
-    '/dev': {
-      target: 'http://16845-yfyb-common-zatech-gaia-devcenter.test.za-tech.net',
-      changeOrigin: true,
-      // pathRewrite: { '^/server': '' },  // '/server/api/'
-    },
-    '/resource': {
-      target: 'http://16845-yfyb-common-zatech-gaia-devcenter.test.za-tech.net',
-      changeOrigin: true,
-      // pathRewrite: { '^/server': '' },  // '/server/api/'
-    },
-  },
+  proxy: _proxy,
 };
