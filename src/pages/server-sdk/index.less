@@ -1,6 +1,14 @@
 @import '~antd/es/style/themes/default.less';
 
 .componentType {
+  .modelBtn {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+  }
+  .time {
+    padding-right: 20px;
+  }
   :global {
     .ant-col-8 {
       margin-bottom: 16px;
@@ -15,6 +23,20 @@
     .ant-card-head {
       min-height: 38px;
     }
+    button, html [type="button"], [type="reset"], [type="submit"] {
+      margin-right: 20px;
+    }
   }
 }
 
+.record {
+  margin-top: 20px;
+  .label {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+  }
+  .recordTable {
+    margin-top: 40px;
+  }
+}

@@ -10,19 +10,12 @@ const mapStateToProps = state => ({
   usedRecordList: state[namespace].list.usedRecords,
   // currentPage: state.businessYilianWechatQuery.currentPage.group,
   // totalElements: state.businessYilianWechatQuery.totalElements.group,
-  // searchParam: state.businessYilianWechatQuery.searchParam.group,
-  // allGroupName: state.businessYilianWechatQuery.list.queryMessage,
-  // loading:
-  //   state.loading.effects[
-  //     ('businessYilianWechatQuery/fetchGroupPerformance',
-  //       'businessYilianWechatQuery/getQueryMessage')
-  //     ],
 });
 const mapDispatchToProps = dispatch => ({
   fetchComponentUsedRecords: (startValue, endValue) =>
     dispatch({
       type: `${namespace}/fetchComponentUsedRecords`,
-      payload: { startValue, endValue },
+      payload: { startDate: startValue, endDate: endValue },
     }),
   // onFetchGroupListDebounce: debounce(
   //   (way, page) =>
@@ -32,11 +25,6 @@ const mapDispatchToProps = dispatch => ({
   //     }),
   //   500
   // ),
-  // onSearchParamChange: (key, value) =>
-  //   dispatch({
-  //     type: 'businessYilianWechatQuery/updateSearchParam',
-  //     payload: { origin: 'group', key, value },
-  //   }),
 });
 
 @connect(

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Carousel } from 'antd';
+import { Carousel, Col, Row } from 'antd';
 import styles from './index.less'
 
 export class index extends Component {

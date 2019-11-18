@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
   fetchComponentReleaseNotes: currentPage =>
     dispatch({
       type: `${namespace}/fetchComponentReleaseNotes`,
-      payload: { currentPage },
+      payload: { current: currentPage, size: 2 },
     }),
 });
 
@@ -83,7 +83,7 @@ export class Notes extends Component {
   render() {
     const { releaseNotesList, releaseNotesPage, releaseNotesTotal, loading } = this.props;
     const loadMore =
-      releaseNotesPage * this.state.size <= releaseNotesTotal ? (
+      releaseNotesPage * this.state.size < releaseNotesTotal ? (
         <Button onClick={this.onLoadMore} className={styles.loadMore}>加载更多...</Button>
       ) : null;
     return (

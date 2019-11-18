@@ -10,7 +10,7 @@ export default {
   menu: {
     locale: true,
   },
-  title: '开发者中心',
+  // title: '开发者中心',
   pwa: false,
   iconfontUrl: '',
 };

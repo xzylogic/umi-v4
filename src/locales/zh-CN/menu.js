@@ -1,6 +1,7 @@
 export default {
   'menu.index': '主页',
   'menu.server-sdk': '服务&SDK',
+  'menu.server-sdk.detail': '详情',
   'menu.server-sdk.demo1': '通用一',
   'menu.server-sdk.demo2': '通用二',
   'menu.server-sdk.demo1.page1': '页面一',

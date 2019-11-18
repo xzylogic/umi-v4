@@ -51,6 +51,11 @@ export default [
             component: './server-sdk',
           },
           {
+            path: '/server-sdk/detail',
+            name: 'detail',
+            component: './server-sdk/detail',
+          },
+          {
             path: '/server-blueprint',
             name: 'server-blueprint',
             component: './server-blueprint',
@@ -80,7 +85,8 @@ export default [
             path: '/bg-manage-center',
             name: 'bg-manage-center',
             component: './bg-manage-center',
-          }, // {
+          },
+          // {
           //   path: '/dashboard',
           //   name: 'dashboard',
           //   icon: 'dashboard',
@@ -247,25 +253,25 @@ export default [
           //     },
           //   ],
           // },
-          // {
-          //   name: 'account',
-          //   icon: 'user',
-          //   path: '/account',
-          //   routes: [
-          //     {
-          //       name: 'center',
-          //       icon: 'smile',
-          //       path: '/account/center',
-          //       component: './account/center',
-          //     },
-          //     {
-          //       name: 'settings',
-          //       icon: 'smile',
-          //       path: '/account/settings',
-          //       component: './account/settings',
-          //     },
-          //   ],
-          // },
+          {
+            name: 'account',
+            icon: 'user',
+            path: '/account',
+            routes: [
+              {
+                name: 'center',
+                icon: 'smile',
+                path: '/account/center',
+                component: './account/center',
+              },
+              {
+                name: 'settings',
+                icon: 'smile',
+                path: '/account/settings',
+                component: './account/settings',
+              },
+            ],
+          },
           // {
           //   name: 'editor',
           //   icon: 'highlight',

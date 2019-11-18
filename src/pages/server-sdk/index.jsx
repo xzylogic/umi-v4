@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
 import { Tabs, Card, Button, Avatar, Row, Col } from 'antd';
+import Link from 'umi/link';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import PageLoading from '@/components/PageLoading';
 // import { FormattedMessage } from 'umi-plugin-react/locale';
@@ -56,6 +57,14 @@ export class index extends Component {
                       bordered={false}
                       headStyle={{ background: `url(${val.headIcon}) 17px 7px / 20px 20px no-repeat` }}>
                       {val.description}
+                      <div className={styles.modelBtn}>
+                        <Button type="primary">
+                          <Link to="/server-sdk/detail">文档</Link>
+                        </Button>
+                        <Button type="primary">
+                          <Link to="/server-sdk/detail">详情</Link>
+                        </Button>
+                      </div>
                     </Card>
                   </Col>
                 ))

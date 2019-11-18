@@ -7,18 +7,34 @@
   bottom: 64px;
   left: 0;
   width: 100%;
-  background: red;
   .pic1 {
-    background: url("../assets/1.jpg") no-repeat center center lightgray;
+    background: url("../assets/index1.png") no-repeat center center lightgray;
+    background-size: cover;
   }
   .pic2 {
-    background: url("../assets/2.jpg") no-repeat center center lightgray;
+    //.pic2_six {
+    //  position: relative;
+    //  left: 50%;
+    //  width: 70vw;
+    //  height: 50vh;
+    //  background-color: red;
+    //  transform: translate(-50%, 42%);
+    //}
+    background: url("../assets/index2-1.png") 20vw 26vh no-repeat,
+                url("../assets/index2-2.png") 35vw 26vh no-repeat,
+                url("../assets/index2-3.png") 50vw 26vh no-repeat,
+                url("../assets/index2-4.png") 20vw 50vh no-repeat,
+                url("../assets/index2-5.png") 35vw 50vh no-repeat,
+                url("../assets/index2-6.png") 50vw 50vh no-repeat;
+    background-size: 15vw 15vh;
   }
   .pic3 {
     background: url("../assets/3.jpg") no-repeat center center lightgray;
+    background-size: cover;
   }
   .pic4 {
     background: url("../assets/4.jpg") no-repeat center center lightgray;
+    background-size: cover;
   }
   :global {
     .ant-carousel .slick-slide {
@@ -31,6 +47,10 @@
 
     .ant-carousel-vertical .slick-dots li button, .ant-carousel-vertical .slick-dots li.slick-active button {
       height: 10vh;
+    }
+
+    .ant-carousel .slick-list .slick-slide {
+      background: #000;
     }
 
     .ant-carousel-vertical .slick-dots li {

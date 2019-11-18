@@ -18,8 +18,7 @@ export default {
 
   effects: {
     *fetchComponentUsedRecords({ payload }, { call, put }) {
-      const { startValue, endValue } = payload;
-      const res = yield call(componentUsedRecordsService, { startDate: startValue, endDate: endValue });
+      const res = yield call(componentUsedRecordsService, payload);
       if (res && res.success) {
         yield put({
           type: 'updateList',
@@ -32,8 +31,8 @@ export default {
     },
 
     *fetchComponentReleaseNotes({ payload }, { call, put }) {
-      const { currentPage } = payload;
-      const res = yield call(componentReleaseNotesService, { current: currentPage, size: 2 });
+      const { current } = payload;
+      const res = yield call(componentReleaseNotesService, payload);
       if (res && res.success) {
         yield put({
           type: 'updateConcatList',
@@ -41,7 +40,7 @@ export default {
             key: 'releaseNotes',
             list: res.value.records,
             totalElements: res.value.total,
-            currentPage,
+            currentPage: current,
           },
         });
       }
