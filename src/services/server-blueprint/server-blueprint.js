@@ -1,7 +1,7 @@
 import request from '@/utils/request';
 
 export async function componentUsedRecordsService(params) {
-  return request('/service/dev/center/component-used-records', {
+  return request('/service/dev/center/service-blue-printer', {
     method: 'POST',
     data: params,
   });
